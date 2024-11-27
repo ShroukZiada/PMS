@@ -1,0 +1,27 @@
+@import "../Variables";
+
+::ng-deep.mdc-text-field--outlined {
+ --mdc-outlined-text-field-container-shape: 25px !important
+}
+
+
+table {
+ thead {
+  tr {
+   th {
+    background-color: $table_color !important;
+    padding: 20px !important;
+    color: $sec_color !important;
+   }
+  }
+ }
+}
+
+@media (min-width: 576px) {
+
+ .container,
+ .container-sm {
+  /* max-width: 540px; */
+  max-width: 100%;
+ }
+}

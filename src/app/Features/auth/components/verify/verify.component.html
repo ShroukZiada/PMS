@@ -1,0 +1,61 @@
+<section id="Auth">
+ <!--Start verifyForm  -->
+ <div class="container">
+  <div class="row justify-content-center vh-100 align-items-center">
+   <div class="col-md-10">
+    <div class="logo d-flex justify-content-center align-content-center row1 ">
+     <img src="../../../../../assets/images/logo-.png" alt="" class="">
+    </div>
+    <div class="Card sign_up_cared auth__card mt-3 p-5 text-capitalize">
+     <div class="card-header ">
+      <p class="m-0">welcome to PMS</p>
+      <h1 class="h3">Verify Account</h1>
+     </div>
+     <div class="card-body">
+      <div class="">
+       <form action="" class="example-form " [formGroup]="verifyForm" (ngSubmit)="verifyEmail()">
+        <div class="container row g-2">
+         <!-- E-mail -->
+         <div class="col-md-12">
+          <mat-form-field class="w-100">
+           <mat-label class="">Email</mat-label>
+           <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com" class="inp ">
+           <mat-error
+            *ngIf="verifyForm.get('email')?.errors !== null && verifyForm.get('email')?.errors?.['pattern'] && verifyForm.get('email')?.value">
+            Please enter a valid email address
+           </mat-error>
+           <mat-hint class="text-danger"
+            *ngIf="verifyForm.get('email')?.touched && verifyForm.get('email')?.hasError('required')">
+            E-mail is required
+           </mat-hint>
+          </mat-form-field>
+         </div>
+         <div class="col-md-12">
+          <mat-form-field class="w-100">
+           <mat-label class="">OTP Verification</mat-label>
+           <input type="text" matInput formControlName="code" placeholder="Enter Verification" class="inp ">
+           <mat-error *ngIf="verifyForm.hasError('code') && !verifyForm.hasError('code')">
+            Please enter a valid OTP Verification
+           </mat-error>
+           <mat-hint class="text-danger"
+            *ngIf="verifyForm.get('code')?.touched && verifyForm.get('code')?.hasError('required')">
+            OTP Verification is required
+           </mat-hint>
+          </mat-form-field>
+         </div>
+         <div class="d-flex justify-content-around align-items-center">
+          <button type="submit" class="btn btn-warning w-50 rounded rounded-pill mt-2" [disabled]="verifyForm.invalid">
+           <i *ngIf="isloading" class="fa-solid fa-spinner fa-spin-pulse"></i>
+           send code</button>
+         </div>
+        </div>
+       </form>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+ <!-- End verifyForm  -->
+
+</section>

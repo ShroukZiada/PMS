@@ -1,0 +1,79 @@
+<section id="Auth">
+  <!--Start loginForm  -->
+  <div class="container">
+    <div class="row justify-content-center vh-100 align-items-center">
+      <div class="col-md-5">
+        <div class="logo d-flex justify-content-center align-content-center row1 ">
+          <img src="../../../../../assets/images/logo-.png" alt="" class="">
+        </div>
+        <div class="Card sign_up_cared auth__card mt-3 p-5 text-capitalize">
+          <div class="card-header ">
+            <p class="m-0">welcome to PMS</p>
+            <h1 class="h3">Come and be part of it</h1>
+          </div>
+          <div class="card-body">
+            <div class="">
+              <form action="" class="example-form " [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm)">
+                <div class="container row g-2">
+                  <!-- E-mail -->
+                  <div class="col-md-12">
+                    <mat-form-field class="w-100">
+                      <mat-label class="">Email</mat-label>
+                      <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com"
+                        class="inp ">
+                      <mat-error
+                        *ngIf="loginForm.get('email')?.errors !== null && loginForm.get('email')?.errors?.['pattern'] && loginForm.get('email')?.value !== localPss">
+                        Please enter a valid email address
+                      </mat-error>
+                      <mat-hint class="text-danger"
+                        *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('required')">
+                        E-mail is required
+                      </mat-hint>
+                    </mat-form-field>
+                  </div>
+                  <!-- Password -->
+                  <div class="col-md-12">
+                    <mat-form-field class="w-100 ">
+                      <mat-label class="lable">Password</mat-label>
+                      <input formControlName="password" class="inp text-dark" matInput placeholder="Enter your password"
+                        [type]="hidePaasword ? 'password' : 'text'">
+                      <button type="button" class="bg-transparent" mat-icon-button matSuffix
+                        (click)="hidePaasword = !hidePaasword" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hidePaasword">
+                        <mat-icon class="text-success">{{hidePaasword ? 'visibility_off' :
+                          'visibility'}}
+                        </mat-icon>
+                      </button>
+                      <mat-error
+                        *ngIf="loginForm.get('password')?.errors !== null && loginForm.get('password')?.errors?.['required']">Password
+                        is required
+                      </mat-error>
+                      <mat-error
+                        *ngIf="loginForm.get('password')?.errors !== null && loginForm.get('password')?.errors?.['pattern'] && loginForm.get('password')?.value !== localPss">Password
+                        must contain at least one digit,one lowercase letter,one uppercase letter,one special character,
+                        and is at least 6 characters long.
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="d-flex justify-content-between mt-5">
+                    <p class="text-white m-0 p-0">if you not have an account <a routerLink="../register">sign up</a></p>
+                    <a routerLink="../forget-pass" class=" m-0 p-0">i forgot my password </a>
+                  </div>
+                  <div class="d-flex justify-content-around align-items-center">
+                    <button type="submit" class="btn btn-warning w-50 rounded rounded-pill mt-2"
+                      [disabled]="loginForm.invalid">
+                      <i *ngIf="isloading" class="fa-solid fa-spinner fa-spin-pulse"></i>
+                      sign Up</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End loginForm  -->
+
+</section>

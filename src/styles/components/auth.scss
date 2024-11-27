@@ -1,0 +1,71 @@
+@import "../Variables";
+
+
+#Auth {
+ background-image: url(../../assets/images/bg1.png);
+ height: 100vh;
+ background-position: center center;
+ background-repeat: no-repeat;
+ background-size: cover;
+
+ .auth__card {
+  // height: 500px;
+  border-radius: 15px;
+  background-color: $auth_card-bg;
+
+
+  .card-header {
+
+   p {
+    color: $sec_color;
+   }
+
+   h1 {
+    color: $main_color;
+    font-family: Inter;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 46px;
+    position: relative;
+
+    &:after {
+     content: "";
+     width: 26px;
+     height: 4px;
+     background: $main_color;
+     position: absolute;
+     left: 0;
+     top: 40px;
+    }
+   }
+  }
+
+  .card-body {
+   .img__Size {
+    width: 10% !important;
+   }
+
+   button {
+    border: none;
+   }
+
+   form {
+    button {
+     background-color: $main_color;
+
+    }
+
+    a {
+     color: $main_color;
+     font-weight: bold;
+     text-decoration: none;
+    }
+   }
+  }
+ }
+}
+
+#changePassword {
+ background-color: $geern_color !important;
+
+}

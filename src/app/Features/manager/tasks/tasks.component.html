@@ -1,0 +1,88 @@
+<section class="main bg-light">
+  <header class="tasks-header ">
+    <!--? Import shared-header component to display main header and content -->
+    <div class="container-fluid">
+      <div class="row  justify-content-between align-items-center shadow py-3 mb-4 text-capitalize">
+        <app-shared-header mainTextHeader="tasks" mainTxTHeaderBtn="Add new task"
+          toDynamicPath="addTask"></app-shared-header>
+      </div>
+    </div>
+  </header>
+  <div class="container-fluid">
+    <div class="col-8 ">
+      <mat-form-field class="w-75 " appearance="outline">
+        <button matPrefix mat-icon-button (click)="onGetManagerTasks()">
+          <mat-icon>search</mat-icon>
+        </button>
+        <mat-label class="lable">Search</mat-label>
+        <input type="text" class=" text-dark inp-radius" placeholder="Search By Title"
+          [(ngModel)]="projectFiltrationValue" (keyup.enter)="onGetManagerTasks()" matInput>
+        <button *ngIf="projectFiltrationValue" matSuffix mat-icon-button aria-label="Clear"
+          (click)="projectFiltrationValue='';onGetManagerTasks()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <div class="">
+      <table *ngIf="TasktList.length != 0"
+        class="text-capitalize table table-bordered table-hover table-striped border border-2 p-3 text-center">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>employee Name</th>
+            <th>project title</th>
+            <th>status</th>
+            <th>Creation Date</th>
+            <th>Modification Date</th>
+            <th>action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor=" let tasks of TasktList">
+            <!--? Title Column -->
+            <td class="pt-3">{{tasks.title}}</td>
+            <!--? employeeName Column -->
+            <td class="pt-3">{{tasks.employee.userName}}</td>
+            <!--? projecttitle Column -->
+            <td class="pt-3">{{tasks.project.title}}</td>
+            <!--? status Column -->
+            <td class="pt-3">
+              <span class="statuses p-2 rounded-pill" [class]="tasks.status">{{tasks.status}}</span>
+            </td>
+            <!--? CreationDate Column -->
+            <td class="pt-3">{{tasks.creationDate| date:'dd/MM/yyyy hh:mm a'}}</td>
+            <!--? ModificationDate Column -->
+            <td>{{tasks.modificationDate | date:'dd/MM/yyyy hh:mm a'}}</td> <!--? Task Column -->
+            <td>
+              <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item [routerLink]="['view',tasks.id,'disabled']">
+                  <mat-icon>visibility</mat-icon>
+                  <span>view</span>
+                </button>
+                <button mat-menu-item [routerLink]="['edit-Task',tasks.id,'edit']">
+                  <mat-icon>edit</mat-icon>
+                  <span>edit</span>
+                </button>
+                <button mat-menu-item (click)="openDeleteDialo(tasks.id,tasks.title,'1500ms', '1000ms')">
+                  <mat-icon>delete</mat-icon>
+                  <span>delete</span>
+                </button>
+              </mat-menu>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- <app-no-data *ngIf=" TasktList.data.length==0 "></app-no-data> -->
+      <div class=" bg-transparent">
+        <!-- ? paginator -->
+        <mat-paginator *ngIf="TasktList.length > 0" #paginator class="demo-paginator  bg-transparent"
+          (page)="handlePageEvent($event)" [length]="totalNumberOfRecords" [pageSize]="pageSize"
+          [pageIndex]="pageNumber" [pageSizeOptions]="[5, 10, 25 , 50]" aria-label="Select page">
+        </mat-paginator>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,62 @@
+@import "../Variables";
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+ background: transparent !important;
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-floating-label {
+ color: $main_color !important;
+}
+
+.mdc-text-field--filled.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-floating-label,
+.mdc-text-field--filled.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-floating-label--float-above {
+ color: #f44336 !important;
+}
+
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+ background: red !important;
+}
+
+
+
+::ng-deep .mat-mdc-form-field.mat-primary {
+ mat-form-field.mat-primary .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: transparent;
+ }
+}
+
+
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled .project) .mdc-line-ripple::before {
+ border-bottom-color: rgb(255 250 250 / 42%) !important;
+}
+
+
+.mdc-text-field--filled {
+ border-top-left-radius: 31px !important;
+}
+
+.inp {
+ &::placeholder {
+  color: white !important;
+ }
+
+ background-color: transparent !important;
+}
+
+.lable {
+ color: rgba(239, 155, 40, 1);
+}
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-floating-label,
+.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-floating-label--float-above {
+ color: $main_color !important;
+ font-size: 20px !important;
+ border: 10 px solid #3cf436 !important;
+}
+
+.mdc-text-field--filled {
+ // --mdc-filled-text-field-active-indicator-color: rgb(239, 40, 143) !important;
+ --mdc-filled-text-field-focus-active-indicator-color: rgba(239, 155, 40, 1) !important;
+}

@@ -1,0 +1,37 @@
+@import "../Variables";
+
+.main {
+ background-color: rgba(128, 128, 128, 0.17);
+ min-height: 100vh;
+
+ .main-btn:hover {
+  color: $main_color;
+  background-color: $sec_color;
+  border: 1px solid $main_color;
+ }
+}
+
+::ng-deep.mdc-text-field--outlined {
+ --mdc-outlined-text-field-container-shape: 25px !important
+}
+
+::ng-deep.cdk-overlay-pane:not(.mat-mdc-select-panel-above) div.mat-mdc-select-panel {
+ border-radius: 18px !important;
+}
+
+.statuses {
+ &.ToDo {
+  background-color: $ToDo;
+  color: $sec_color;
+ }
+
+ &.InProgress {
+  background-color: $InProgress;
+  color: $sec_color;
+ }
+
+ &.Done {
+  background-color: $Done;
+  color: $sec_color;
+ }
+}

@@ -1,0 +1,13 @@
+<section id="dashboard">
+ <div class="container-fluid ">
+  <div class="row opened ">
+   <app-nav-bar class="px-0"></app-nav-bar>
+   <div class="px-0 bg-black" [class]="sideBar?.isOpened? 'col-md-2' : 'col-md-1' ">
+    <app-side-bar></app-side-bar>
+   </div>
+   <div class="px-0 bg-light min-vh-100" [class]="sideBar?.isOpened? 'col-md-10':'col-md-11' ">
+    <router-outlet></router-outlet>
+   </div>
+  </div>
+ </div>
+</section>

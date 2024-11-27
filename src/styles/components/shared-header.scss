@@ -1,0 +1,10 @@
+@import "../Variables";
+
+.main-btn {
+ background: $main_color ;
+ font-size: 18px;
+
+ &:hover {
+  background: rgb(187, 118, 21);
+ }
+}

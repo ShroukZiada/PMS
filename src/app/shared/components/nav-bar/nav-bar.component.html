@@ -1,0 +1,44 @@
+<nav id="navbar" class="bg-body-tertiary py-2">
+  <div class="container-fluid">
+    <div class="row justify-content-between align-items-center">
+      <div class="col-2 ">
+        <img src="./assets/images/logo-dark.png" class="logo" alt="">
+      </div>
+      <div class="col-4">
+        <div class="d-flex justify-content-end align-items-center ">
+          <span class="bell-icon position-relative d-flex align-items-center me-2">
+            <span class="position-absolute rounded-circle bell"><sup class="text-white num">1</sup></span>
+            <i class="fa-solid fa-bell main-color fa-2x"></i>
+          </span>
+          <img *ngIf="currentUser?.imagePath" [src]="imgUrl + currentUser?.imagePath"
+            class="rounded-circle profile-img me-2" style="width: 10%;" alt="profile">
+          <img *ngIf="!currentUser?.imagePath" [src]="emptyImg" class="rounded-circle profile-img" alt="dummy-img">
+          <div class="">
+            <h6 class="nav-link mb-0">{{currentUser?.userName}}</h6>
+            <span class="text-muted">{{currentUser?.email}}</span>
+          </div>
+          <div class="">
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+              <mat-icon class="text-muted">keyboard_arrow_down</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button routerLink="profile" mat-menu-item>
+                <mat-icon class="secondary-color">account_circle</mat-icon>
+                <span>Profile</span>
+              </button>
+              <button mat-menu-item [routerLink]="['changePassword']" (click)="changePasswordDialog()">
+                <mat-icon class="secondary-color">lock-open</mat-icon>
+                <span>Change Password</span>
+              </button>
+              <button mat-menu-item (click)="openLogoutDialog()">
+                <mat-icon class="secondary-color">logout</mat-icon>
+                <span>Log Out</span>
+              </button>
+            </mat-menu>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,173 @@
+<section id="Auth">
+  <!--Start registerForm  -->
+  <div class="container">
+    <div class="row justify-content-center vh-100 align-items-center">
+      <div class="col-md-7">
+        <div class="logo d-flex justify-content-center align-content-center row1 ">
+          <img src="../../../../../assets/images/logo-.png" alt="" class="">
+        </div>
+        <div class="Card sign_up_cared auth__card mt-3 p-5 text-capitalize">
+          <div class="card-header ">
+            <p class="m-0">welcome to PMS</p>
+            <h1 class="h3">Create New Account</h1>
+          </div>
+          <div class="card-body">
+            <div class=" upload__img d-flex justify-content-center center">
+              <ng-container *ngIf="imageUploaded">
+                <div class="edit  ">
+                  <ngx-file-drop dropZoneClassName="" [multiple]="false" dropZoneLabel="Drop files here"
+                    (onFileDrop)="dropped($event)" (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+                    <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                      <div>
+                        <button type="button" (click)="openFileSelector()" class="iconEdit">
+                          <i class="fa-solid fa-pen   "></i>
+                        </button>
+                      </div>
+                    </ng-template>
+                  </ngx-file-drop>
+                </div>
+              </ng-container>
+              <ngx-file-drop dropZoneClassName="drop-zone" *ngIf="!imageUploaded " [multiple]="false"
+                dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)" (onFileOver)="fileOver($event)"
+                (onFileLeave)="fileLeave($event)">
+                <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                  <div>
+                    <button type="button" (click)="openFileSelector()"
+                      class="bg-transparent d-flex flex-column align-items-center">
+                      <i class="fa-solid fa-upload fs-4 mb-2 text-warning"></i>
+                      <span class=" upload text-light">
+                        Upload your profile image</span>
+                    </button>
+                  </div>
+                </ng-template>
+              </ngx-file-drop>
+              <div *ngIf="imageUploaded" class="drop-zone img__Size">
+                <img [src]="imageUrl" class="w-100 img-fluid photo" alt="Uploaded Image">
+              </div>
+            </div>
+            <div class="">
+              <form action="" class="example-form" [formGroup]="registerForm" (ngSubmit)="onSignUp(registerForm)">
+                <div class="container row g-2">
+                  <!-- userName -->
+                  <div class="col-md-6 mt-5 ">
+                    <mat-form-field class="w-100">
+                      <mat-label class="lable">Full Name</mat-label>
+                      <input formControlName="userName" type="text" placeholder="Enter your Full Name" class="inp "
+                        matInput>
+                      <mat-hint class="text-danger"
+                        *ngIf="registerForm.get('userName')?.touched && registerForm.get('userName')?.hasError('required')">
+                        User Name is required
+                      </mat-hint>
+                      <mat-error class="text-danger" *ngIf="registerForm.get('userName')?.getError('pattern')">User
+                        name must
+                        containes from 4 to 8 characters and end with numbers without spaces</mat-error>
+                    </mat-form-field>
+                  </div>
+                  <!-- E-mail -->
+                  <div class="col-md-6 mt-5">
+                    <mat-form-field class="w-100">
+                      <mat-label class="">Email</mat-label>
+                      <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com"
+                        class="inp ">
+                      <mat-error
+                        *ngIf="registerForm.get('email')?.errors !== null && registerForm.get('email')?.errors?.['pattern'] && registerForm.get('email')?.value !== localPss">
+                        Please enter a valid email address
+                      </mat-error>
+                      <mat-hint class="text-danger"
+                        *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.hasError('required')">
+                        E-mail is required
+                      </mat-hint>
+                    </mat-form-field>
+                  </div>
+                  <!-- Country -->
+                  <div class="col-md-6 mt-5">
+                    <mat-form-field class="w-100">
+                      <mat-label>Country</mat-label>
+                      <input type="text" matInput formControlName="country" placeholder="Enter Your Country"
+                        class="inp ">
+                      <mat-error *ngIf="registerForm.hasError('country') && !registerForm.hasError('required')">
+                        Please enter a valid country
+                      </mat-error>
+                      <mat-hint class="text-danger"
+                        *ngIf="registerForm.get('country')?.touched && registerForm.get('country')?.hasError('required')">
+                        Country is required
+                      </mat-hint>
+                    </mat-form-field>
+                  </div>
+                  <!-- Phone -->
+                  <div class="col-md-6 mt-5">
+                    <mat-form-field class="w-100">
+                      <mat-label>Phone Number</mat-label>
+                      <input type="tel" matInput formControlName="phoneNumber" placeholder="Enter Your phone Number"
+                        class="inp ">
+                      <mat-error *ngIf="registerForm.get('phoneNumber')?.getError('pattern')">
+                        phoneNumber Start with 02 - and Are exactly eleven digits long
+                      </mat-error>
+                      <mat-hint class="text-danger"
+                        *ngIf="registerForm.get('phoneNumber')?.touched && registerForm.get('phoneNumber')?.hasError('required')">
+                        phoneNumber is required
+                      </mat-hint>
+                    </mat-form-field>
+                  </div>
+                  <!-- Password -->
+                  <div class="col-md-6  mt-5">
+                    <mat-form-field class="w-100 ">
+                      <mat-label class="lable">Password</mat-label>
+                      <input formControlName="password" class="inp text-dark" matInput placeholder="Enter your password"
+                        [type]="hidePaasword ? 'password' : 'text'">
+                      <button type="button" class="bg-transparent" mat-icon-button matSuffix
+                        (click)="hidePaasword = !hidePaasword" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hidePaasword">
+                        <mat-icon class="text-success">{{hidePaasword ? 'visibility_off' :
+                          'visibility'}}
+                        </mat-icon>
+                      </button>
+                      <mat-error
+                        *ngIf="registerForm.get('password')?.errors !== null && registerForm.get('password')?.errors?.['required']">Password
+                        is required
+                      </mat-error>
+                      <mat-error
+                        *ngIf="registerForm.get('password')?.errors !== null && registerForm.get('password')?.errors?.['pattern'] && registerForm.get('password')?.value !== localPss">Password
+                        must contain at least one digit,one lowercase letter,one uppercase letter,one special character,
+                        and is at least 6 characters long.
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <!-- Commfoerm Password -->
+                  <div class="col-md-6 mt-5">
+                    <mat-form-field class="w-100">
+                      <mat-label class="lable">Confirm Password</mat-label>
+                      <input formControlName="confirmPassword" placeholder="Confirm Password" class="inp text-white"
+                        matInput [type]="hideCOMFPaasword ? 'password' : 'text'">
+                      <button type="button" class="bg-transparent" mat-icon-button matSuffix
+                        (click)="hideCOMFPaasword = !hideCOMFPaasword" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hideCOMFPaasword">
+                        <mat-icon class="text-success">{{hideCOMFPaasword ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
+                      <mat-error
+                        *ngIf="registerForm.get('confirmPassword')?.getError('required')&&(registerForm.get('confirmPassword')?.value!=''||registerForm.get('confirmPassword')?.touched||registerForm.invalid)">confirmPassword
+                        is required</mat-error>
+                      <mat-hint class="text-danger "
+                        *ngIf="registerForm.get('confirmPassword')?.value!=''&&registerForm.get('confirmPassword')?.getError('compare')">Password
+                        not match</mat-hint>
+                    </mat-form-field>
+                  </div>
+                  <p class="text-white m-0 p-0">if you already have an account <a routerLink="../login">sign in</a></p>
+
+                  <div class="d-flex justify-content-around align-items-center">
+                    <button type="submit" class="btn btn-warning w-50 rounded rounded-pill mt-2"
+                      [disabled]="registerForm.invalid">
+                      <i *ngIf="isloading" class="fa-solid fa-spinner fa-spin-pulse"></i>
+                      sign Up</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End registerForm  -->
+
+</section>
