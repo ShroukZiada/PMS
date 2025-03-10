@@ -25,6 +25,7 @@
       </mat-form-field>
     </div>
     <div class="">
+      <app-no-data *ngIf=" projectList.data.length==0 "></app-no-data>
       <table *ngIf="projectList.data.length != 0"
         class="table table-bordered table-hover table-striped border border-2 p-3 text-center">
 
@@ -72,7 +73,6 @@
           </tr>
         </tbody>
       </table>
-      <!-- <app-no-data *ngIf=" projectList.data.length==0 "></app-no-data> -->
       <div class=" bg-transparent">
         <!-- ? paginator -->
         <mat-paginator *ngIf="projectList.data.length > 0" #paginator class="demo-paginator  bg-transparent"

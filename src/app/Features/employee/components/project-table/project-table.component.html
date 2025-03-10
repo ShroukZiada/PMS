@@ -1,0 +1,133 @@
+<section class="main bg-light">
+  <header>
+    <!--? Import shared-header component to display main header and content -->
+    <div class="container-fluid">
+      <div class="row justify-content-between align-items-center shadow py-3 mb-4">
+        <div class="container-fluid d-flex justify-content-between align-items-center py-4 px-5">
+          <h2 class="title">
+            <a routerLink='/dashboard/home'><i class="fa-solid fa-arrow-left me-2"
+                style="color: #0E382F;font-size: 20px;"></i>
+            </a>{{ mainTextHeader }}
+          </h2>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <div class="data container-fluid p-3">
+    <div class="row mt-3 align-items-center">
+      <div class="col-md-8">
+
+        <mat-form-field class="w-75 " appearance="outline">
+          <button matPrefix mat-icon-button (click)="getProjectsForEmployee()">
+            <mat-icon>search</mat-icon>
+          </button>
+          <mat-label class="lable">Search</mat-label>
+
+          <input type="text" class=" text-dark inp-radius" placeholder="Search By Title" [(ngModel)]="title"
+            (keyup.enter)="getProjectsForEmployee()" matInput>
+          <button *ngIf="title" matSuffix mat-icon-button aria-label="Clear"
+            (click)="title='';getProjectsForEmployee()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+      <div class=" col-md-4 ">
+        <div class="  text-end">
+          <i style="cursor: pointer;" (click)="isShowCard=true"
+            class="fa-solid fa-table-cells fa-2x cursor-pointer seconary-color"></i>
+          <i style="cursor: pointer;" (click)="isShowCard=false"
+            class="fa-solid fa-bars fa-2x ms-3 me-5 cursor-pointer seconary-color"></i>
+        </div>
+      </div>
+
+
+      <table *ngIf="employeeProjectsData?.length != 0 && !isShowCard"
+        class="table table-bordered table-hover table-striped border border-2 p-3 text-center">
+        <app-no-data *ngIf="employeeProjectsData?.length == 0"></app-no-data>
+
+        <thead class="">
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Modification date</th>
+            <th>Number of tasks</th>
+            <th>Date created</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of employeeProjectsData">
+            <td class="pt-3 text-start">{{ item.title }}</td>
+            <td class="pt-3 text-start">{{ item.description }}</td>
+            <td class="pt-3">
+              {{ item.modificationDate | date : "dd-MM-yyyy 'at' hh:mm a" }}
+            </td>
+            <td class="pt-3">{{ item.task.length }}</td>
+            <td class="pt-3">
+              {{ item.creationDate | date : "dd-MM-yyyy 'at' hh:mm a" }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+
+      <div class="row g-4 px-4" *ngIf="employeeProjectsData?.length != 0 && isShowCard">
+        <div class="col-xl-4 col-md-6" *ngFor="let item of employeeProjectsData">
+          <div class="chart-card  shadow pb-4">
+            <h4 class="seconary-color">{{item.title}}</h4>
+            <p class="text-muted description">{{item.description}}</p>
+            <div class="row gy-4">
+              <div class="col-md-12">
+                <div class="chart-item bg-white item-1 d-flex justify-content-between ">
+                  <div class="">
+                    <h6 class="my-2">Number of tasks</h6>
+                    <span class="h2 fw-bolder seconary-color">{{item.task.length }}</span>
+                  </div>
+                  <div class="chart-icon chart-icon-1 mt-5">
+                    <i class="fa-solid fa-list-check"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="chart-item bg-white item-2 d-flex justify-content-between ">
+                  <div class="">
+                    <h6 class="my-2">Creation date</h6>
+                    <span class="h4 fw-bolder seconary-color">{{item.creationDate| date : "dd-MM-yyyy" }}</span>
+                  </div>
+                  <div class="chart-icon chart-icon-2 mt-5">
+                    <i class="fa-solid fa-clock"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div *ngIf="employeeProjectsData?.length != 0" class="d-flex justify-content-end">
+    <mat-paginator #paginator class="demo-paginator" (page)="handlePageEvent($event)"
+      [length]="listData.totalNumberOfRecords" [pageSize]="pageSize" [pageIndex]="pageNumber"
+      [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page">
+    </mat-paginator>
+  </div>
+</section>

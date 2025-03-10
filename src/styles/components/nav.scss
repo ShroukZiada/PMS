@@ -1,0 +1,58 @@
+nav {
+ box-shadow: 0px 1px 4px 0px #00000026;
+ position: relative;
+ z-index: 2;
+
+ .bell-icon {
+  margin-right: 40px;
+
+  .bell {
+   right: -6px;
+   top: -3px;
+   width: 14px;
+   height: 14px;
+   padding: 0.4rem;
+   background-color: #EF9B28;
+   border: 2px solid #fff;
+  }
+
+  sup {
+   font-size: 10px;
+   top: -0.6rem;
+   margin: 0px -3px;
+  }
+ }
+
+ .layer-img::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -18px;
+  width: 1px;
+  height: 100%;
+  background-color: #9A9A9A;
+ }
+
+ .profile-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+ }
+
+ .nav-link {
+  font-size: 14px;
+ }
+
+ span {
+  font-size: 12px;
+  color: #0000005E;
+ }
+
+}
+
+// Media Query
+@media (max-width: 767px) {
+ .logo {
+  display: none;
+ }
+}

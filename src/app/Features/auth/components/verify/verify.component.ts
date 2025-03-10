@@ -35,7 +35,7 @@ export class VerifyComponent implements OnInit {
         console.log(res);
         this.isloading = false;
       },
-      error: (error: HttpErrorResponse) => this._HelperService.error(error),
+      error: (error: HttpErrorResponse) => this._HelperService.error(error, 'Notify That!'),
       complete: () => {
         this._HelperService.success('Now You Can JOIN Us');
         this._Router.navigate(['/auth/login'])

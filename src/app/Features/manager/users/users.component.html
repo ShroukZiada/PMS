@@ -1,75 +1,64 @@
 <header class=" ">
- <!--? Import shared-header component to display main header and content -->
- <div>
-  <app-add-edit-header [textHeader]="textHeader" [mainTxTHeaderLink]=" mainTxTHeaderLink"
-   [toDynamicPath]="'/dashboard/home'"></app-add-edit-header>
- </div>
+  <!--? Import shared-header component to display main header and content -->
+  <div>
+    <app-add-edit-header [textHeader]="textHeader" [mainTxTHeaderLink]=" mainTxTHeaderLink"
+      [toDynamicPath]="'/dashboard/home'"></app-add-edit-header>
+  </div>
 </header>
 
 <div class="container-fluid">
- <!-- <div class="col-8 ">
-   <mat-form-field class="w-75 " appearance="outline">
-     <button matPrefix mat-icon-button (click)="onGetManagerProjects()">
-       <mat-icon>search</mat-icon>
-     </button>
-     <mat-label class="lable">Search</mat-label>
+  <app-no-data *ngIf="listUserStatus.length == 0 "></app-no-data>
+  <section class="table-card mt-5 mx-3 mw-100">
+    <table *ngIf="listUserStatus.length != 0"
+      class="table table-bordered text-capitalize table-hover table-striped border border-2 p-3 text-center">
+      <thead>
+        <tr>
+          <th>User name</th>
+          <th>Status</th>
+          <th>Phone number</th>
+          <th>Email</th>
+          <th>Creation date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of listUserStatus">
+          <td>{{user.userName}}</td>
+          <td>
+            <span class="status" [class]="user.isActivated? 'active' : 'notActive' ">
+              {{user.isActivated?'Active':'notActive'}}
+            </span>
+          </td>
+          <td>{{user.phoneNumber}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.creationDate | date:'dd/MM/yyyy hh:mm a'}}</td>
+          <td>
+            <!--  -->
+            <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item [routerLink]="['view',user.id]">
+                <mat-icon>visibility</mat-icon>
+                <span>view</span>
+              </button>
+              <button mat-menu-item (click)="openBlockDialog(user,'1500ms', '1000ms')">
+                <mat-icon class="secondary-color">block</mat-icon>
+                <span class="dark-color">{{user.isActivated?'Block':'UnBlock' }}</span>
+              </button>
 
-     <input type="text" class=" text-dark inp-radius" placeholder="Search By Title"
-       [(ngModel)]="projectFiltrationValue" (keyup.enter)="onGetManagerProjects()" matInput>
-     <button *ngIf="projectFiltrationValue" matSuffix mat-icon-button aria-label="Clear"
-       (click)="projectFiltrationValue='';onGetManagerProjects()">
-       <mat-icon>close</mat-icon>
-     </button>
-   </mat-form-field>
- </div> -->
- <div class="">
-  <table class="table table-bordered text-capitalize table-hover table-striped border border-2 p-3 text-center">
+            </mat-menu>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-   <thead>
-    <tr>
-     <th>user name</th>
-     <th>user phone</th>
-     <th>status</th>
-     <th> email</th>
-     <th>date created</th>
-     <th>Actions</th>
-    </tr>
-   </thead>
-   <tbody>
-    <tr>
-     <!--? Title Column -->
-     <td>title</td>
-     <!--? Description Column -->
-     <td>description</td>
-     <!--? CreationDate Column -->
-     <td>creationDate | date</td>
-     <!--? ModificationDate Column -->
-     <td>modificationDate | date:'dd/MM/yyyy hh:mm a</td> <!--? Task Column -->
-     <td>projects.task.length</td>
 
-     <!-- <td>
-           <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-             <mat-icon>more_vert</mat-icon>
-           </button>
-           <mat-menu #menu="matMenu">
-             <button mat-menu-item [routerLink]="['view',projects.id,'disabled']">
-               <mat-icon>visibility</mat-icon>
-               <span>view</span>
-             </button>
-             <button mat-menu-item [routerLink]="['editProject',projects.id,'edit']">
-               <mat-icon>edit</mat-icon>
-               <span>edit</span>
-             </button>
-             <<button mat-menu-item (click)="openDeleteDialog(projects.id,projects.title,'1500ms', '1000ms')">
-               <mat-icon>delete</mat-icon>
-               <span>delete</span>
-             </button> 
-           </mat-menu>
-         </td> -->
-    </tr>
-   </tbody>
-  </table>
-  <!-- <app-no-data *ngIf=" projectList.data.length==0 "></app-no-data> -->
-
- </div>
+    <div>
+      <mat-paginator #paginator (page)="handlePageEvent($event)" [length]="userstList?.totalNumberOfRecords"
+        [pageSize]="5" [pageIndex]="pageNumber" [pageSizeOptions]="[5, 10 , 15]" aria-label="Select page">
+      </mat-paginator>
+    </div>
+    <app-no-data *ngIf=" listUserStatus.length==0 "></app-no-data>
+  </section>
 </div>

@@ -23,6 +23,12 @@ import { AddEditHeaderComponent } from './components/add-edit-header/add-edit-he
 import { SharedHeaderComponent } from './components/shared-header/shared-header.component';
 import { MatCardModule } from '@angular/material/card';
 import { SharedDeleteComponent } from './components/shared-delete/shared-delete.component';
+import { MatOptionModule } from '@angular/material/core';
+import { NoDataComponent } from './components/no-data/no-data.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ConfirmPassComponent } from './components/confirm-pass/confirm-pass.component';
+import { LogOutComponent } from './components/log-out/log-out.component';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +39,11 @@ import { SharedDeleteComponent } from './components/shared-delete/shared-delete.
     ChangePasswordComponent,
     AddEditHeaderComponent,
     SharedHeaderComponent,
-    SharedDeleteComponent
+    SharedDeleteComponent,
+    NoDataComponent,
+    PageNotFoundComponent,
+    ConfirmPassComponent,
+    LogOutComponent,
   ],
   imports: [
     CommonModule,
@@ -50,7 +60,9 @@ import { SharedDeleteComponent } from './components/shared-delete/shared-delete.
     MatMenuModule,
     MatDialogModule,
     MatPaginatorModule,
-    MatCardModule
+    MatCardModule,
+    MatOptionModule,
+    MatSelectModule
 
 
   ],
@@ -72,7 +84,11 @@ import { SharedDeleteComponent } from './components/shared-delete/shared-delete.
     AddEditHeaderComponent,
     SharedHeaderComponent,
     MatPaginatorModule,
-    MatCardModule
+    MatCardModule,
+    MatOptionModule,
+    MatSelectModule,
+    NoDataComponent,
+    PageNotFoundComponent
 
 
   ],

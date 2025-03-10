@@ -4,11 +4,11 @@
     <div class="row justify-content-center vh-100 align-items-center">
       <div class="col-md-5">
         <div class="logo d-flex justify-content-center align-content-center row1 ">
-          <img src="../../../../../assets/images/logo-.png" alt="" class="">
+          <img src="./assets/images/logo-.png" alt="" class="">
         </div>
-        <div class="Card sign_up_cared auth__card mt-3 p-5 text-capitalize">
-          <div class="card-header ">
-            <p class="m-0">welcome to PMS</p>
+        <div class="Card sign_up_cared auth__card mt-3 p-5 ">
+          <div class="card-header text-capitalize ">
+            <p class="m-0 ">welcome to PMS</p>
             <h1 class="h3">Come and be part of it</h1>
           </div>
           <div class="card-body">
@@ -18,14 +18,14 @@
                   <!-- E-mail -->
                   <div class="col-md-12">
                     <mat-form-field class="w-100">
-                      <mat-label class="">Email</mat-label>
+                      <mat-label class="text-capitalize">Email</mat-label>
                       <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com"
                         class="inp ">
-                      <mat-error
+                      <mat-error class="text-capitalize"
                         *ngIf="loginForm.get('email')?.errors !== null && loginForm.get('email')?.errors?.['pattern'] && loginForm.get('email')?.value !== localPss">
                         Please enter a valid email address
                       </mat-error>
-                      <mat-hint class="text-danger"
+                      <mat-hint class="text-danger text-capitalize"
                         *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.hasError('required')">
                         E-mail is required
                       </mat-hint>
@@ -34,7 +34,7 @@
                   <!-- Password -->
                   <div class="col-md-12">
                     <mat-form-field class="w-100 ">
-                      <mat-label class="lable">Password</mat-label>
+                      <mat-label class="labl text-capitalizee">Password</mat-label>
                       <input formControlName="password" class="inp text-dark" matInput placeholder="Enter your password"
                         [type]="hidePaasword ? 'password' : 'text'">
                       <button type="button" class="bg-transparent" mat-icon-button matSuffix
@@ -44,11 +44,11 @@
                           'visibility'}}
                         </mat-icon>
                       </button>
-                      <mat-error
+                      <mat-error class="text-capitalize"
                         *ngIf="loginForm.get('password')?.errors !== null && loginForm.get('password')?.errors?.['required']">Password
                         is required
                       </mat-error>
-                      <mat-error
+                      <mat-error class="text-capitalize"
                         *ngIf="loginForm.get('password')?.errors !== null && loginForm.get('password')?.errors?.['pattern'] && loginForm.get('password')?.value !== localPss">Password
                         must contain at least one digit,one lowercase letter,one uppercase letter,one special character,
                         and is at least 6 characters long.
@@ -56,7 +56,7 @@
                     </mat-form-field>
                   </div>
 
-                  <div class="d-flex justify-content-between mt-5">
+                  <div class="d-flex justify-content-between mt-5 text-capitalize">
                     <p class="text-white m-0 p-0">if you not have an account <a routerLink="../register">sign up</a></p>
                     <a routerLink="../forget-pass" class=" m-0 p-0">i forgot my password </a>
                   </div>

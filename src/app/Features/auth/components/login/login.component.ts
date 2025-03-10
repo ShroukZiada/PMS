@@ -39,16 +39,18 @@ export class LoginComponent {
       this.isloading = true;
       this._AuthService.ILogin(loginForm.value).subscribe({
         next: (res: Auth.ILoginRes) => {
-          this.isloading = false;
           this._TokenService.setToken(res.token)
           this._TokenService.getProfile()
+          this.isloading = false;
+
         },
-        error: (error: HttpErrorResponse) => this._HelperService.error(error),
+        error: (error: HttpErrorResponse) => {
+          this.isloading = false;
+          this._HelperService.error(error, 'Notify That!')
+        },
         complete: () => {
           this._HelperService.success('Thanks for joining We’re thrilled to have you.');
-          this.isloading = false;
           this._Router.navigate(['/dashboard']);
-
         }
       });
     }

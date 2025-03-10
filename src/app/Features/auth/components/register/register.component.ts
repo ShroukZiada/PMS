@@ -59,9 +59,9 @@ export class RegisterComponent implements OnInit {
           console.log(res);
           this.isloading = false;
         },
-        error: (error: HttpErrorResponse) => this._HelperService.error(error),
+        error: (error: HttpErrorResponse) => this._HelperService.error(error, 'Notify That!'),
         complete: () => {
-          this._HelperService.success('Account created successfully. A verification code has been sent to your email address',);
+          this._HelperService.success('Account created successfully. A verification code has been sent to your email address');
           const email = this.registerForm.value.email;
           this._Router.navigate([`/`, RoutePath.Auth.verifyCode], { queryParams: { email: email } });
         }
@@ -83,7 +83,7 @@ export class RegisterComponent implements OnInit {
       const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
       fileEntry.file((file: File) => {
         // Here you can access the dropped file
-        console.log('Dropped file:', file);
+        // console.log('Dropped file:', file);
         // Assuming imageUrl is the URL to display the uploaded image
         this.imageUrl = URL.createObjectURL(file);
         this.uploadedFile = file;
@@ -93,10 +93,10 @@ export class RegisterComponent implements OnInit {
   }
 
   public fileOver(event: any) {
-    console.log(event);
+    // console.log(event);
   }
   public fileLeave(event: any) {
-    console.log(event);
+    // console.log(event);
   }
 
 }

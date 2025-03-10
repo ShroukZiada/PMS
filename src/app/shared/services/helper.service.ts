@@ -24,7 +24,7 @@ export class HelperService {
   constructor(private _ToastrService: ToastrService, private __HttpClient: HttpClient) { }
 
 
-  error(error: HttpErrorResponse): void {
+  error(error: HttpErrorResponse, p: string): void {
     this._ToastrService.error(error.error.message, 'Error')
   }
 

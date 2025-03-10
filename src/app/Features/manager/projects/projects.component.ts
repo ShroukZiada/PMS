@@ -45,6 +45,8 @@ export class ProjectsComponent implements OnInit {
     this.onGetManagerProjects()
 
   }
+
+
   private _filter(value: string): any[] {
     const filterValue = value.toLowerCase();
     return this.projectList.data.filter((project) =>
@@ -62,7 +64,7 @@ export class ProjectsComponent implements OnInit {
     this._ProjectsService.getManagerProject(params).subscribe({
       next: (res) => {
         this.projectList = res
-        console.log(res);
+        // console.log(res);
       },
       error(err) { },
       complete() { },
@@ -89,7 +91,7 @@ export class ProjectsComponent implements OnInit {
   onDeleteProject(id: number) {
     this._ProjectsService.deleteManagerProjectById(id).subscribe({
       next: () => { },
-      error: (error: HttpErrorResponse) => this._HelperService.error(error),
+      error: (error: HttpErrorResponse) => this._HelperService.error(error, 'Notify That!'),
 
       complete: () => {
         this.onGetManagerProjects()

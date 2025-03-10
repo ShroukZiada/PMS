@@ -47,7 +47,7 @@ export class ChangePasswordComponent implements OnInit {
       next: (res) => {
         console.log(res);
       },
-      error: (err) => (error: HttpErrorResponse) => this._HelperService.error(error),
+      error: (err) => (error: HttpErrorResponse) => this._HelperService.error(error, 'Notify That!'),
       complete: () => {
         this.onNoClick();
         this._HelperService.success('Change Password Successfuly.');

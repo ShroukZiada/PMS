@@ -40,6 +40,9 @@ export class AuthService {
     return this._HttpClient.post<Auth.IForget>(HttpEndPoint.Auth.forgetPass, emaiValue)
   }
 
+  resetPassword(data: object): Observable<Auth.iReset> {
+    return this._HttpClient.post<Auth.iReset>(HttpEndPoint.Auth.resetPass, data)
+  }
   getRole() {
     if (localStorage.getItem('tokenOfUserr') !== null && localStorage.getItem('userRole') !== null) {
       this.role = localStorage.getItem('userRole')
@@ -49,6 +52,13 @@ export class AuthService {
 
   onChangePassword(data: Auth.iChangePassword): Observable<any> {
     return this._HttpClient.put(HttpEndPoint.Auth.ChangePassword, data)
+  }
+
+
+  logout(): void {
+    localStorage.clear();
+    sessionStorage.clear();
+
   }
 }
 

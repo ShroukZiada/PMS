@@ -3,6 +3,7 @@
 // Sidebar
 #sidebar {
  background-color: $geern_color;
+ transition: 0.5s ease-in-out;
 
  .arroww-left {
   background-color: $main_color;
@@ -15,7 +16,7 @@
   align-items: center;
   padding: 0.6rem;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: 0.5s ease-in-out;
  }
 
  .arroww-right {
@@ -29,17 +30,20 @@
   align-items: center;
   padding: 0.6rem;
   cursor: pointer;
-  transition: 0.3s ease;
+  transition: 0.5s ease-in-out;
  }
 
  .side-links {
-  li {
-   padding: 0.5rem;
-
-   a {
-    color: $sec_color;
-    display: block;
-    padding: 0.4rem;
+  ul {
+   li {
+    a {
+     color: $sec_color;
+     display: block;
+     padding: 0.5rem !important;
+     text-decoration: none !important;
+     list-style: none !important;
+     font-size: 20px !important;
+    }
    }
   }
  }
@@ -54,12 +58,12 @@
  }
 
  .btn-check:checked+.btn,
- .btn.active,
- .btn.show,
+ .btn .active,
+ .btn .show,
  .btn:first-child:active,
  :not(.btn-check)+.btn:active {
-  background-color: transparent !important;
-  border-color: transparent !important;
+  background-color: red !important;
+  border-color: red !important;
  }
 
  .offcanvas,
@@ -104,4 +108,11 @@
  #sideLink {
   display: none;
  }
+}
+
+.active-ul {
+ background-color: rgba($color: #EF9B28, $alpha: 0.3);
+ color: #EF9B28;
+ border-radius: 8px;
+ transition: 0.3s ease;
 }

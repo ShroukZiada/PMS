@@ -7,6 +7,8 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { GlobalInterceptor } from './core/interceptor/global.interceptor';
 import { SpinnerInterceptor } from './core/interceptor/spinner.interceptor';
 import { ToastrModule } from 'ngx-toastr';
+import { SharedModule } from './shared/shared.module';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -19,14 +21,20 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-
+    NgxSpinnerModule.forRoot({ type: 'ball-scale-multiple' }),
+    SharedModule,
+    NgxSpinnerModule,
 
   ],
   providers: [
-
     {
       provide: HTTP_INTERCEPTORS,
       useClass: GlobalInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SpinnerInterceptor,
       multi: true
     },
 

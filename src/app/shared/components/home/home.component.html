@@ -82,3 +82,67 @@
   </div>
  </div>
 </section>
+
+
+<!-- ======================== Employee ================================ -->
+<section *ngIf="userRole =='Employee'" class="bg-white overflow-x-hidden ">
+ <div class="container mt-3">
+  <div class="row justify-content-center align-items-center">
+   <div class="col-md-7">
+    <div class="chart-card  shadow pb-4">
+     <h4 class="seconary-color">Latest Tasks</h4>
+     <p class="text-muted">Tasks you are assigned to do as soon as possible</p>
+     <div class="row gy-4">
+      <div class="col-md-4">
+       <div class="chart-item bg-white item-1 d-flex justify-content-between ">
+        <div class="">
+         <h6 class="my-2">ToDo</h6>
+         <span class="h2 fw-bolder seconary-color">{{tasksCount?.toDo}}</span>
+        </div>
+        <div class="chart-icon chart-icon-1 mt-5">
+         <i> <img src="./assets/images/8396402_graph_chart_data_analytics_statistic_icon 1.png" alt="">
+         </i>
+        </div>
+       </div>
+      </div>
+      <div class="col-md-4">
+       <div class="chart-item bg-white item-2 d-flex justify-content-between ">
+        <div class="">
+         <h6 class="my-2">In Progress</h6>
+         <span class="h2 fw-bolder seconary-color">{{tasksCount?.inProgress}}</span>
+        </div>
+        <div class="chart-icon chart-icon-2 mt-5">
+         <i>
+          <img src="./assets/images/Group 48102727.png" alt="">
+         </i>
+        </div>
+       </div>
+      </div>
+      <div class="col-md-4">
+       <div class="chart-item bg-white item-3 d-flex justify-content-between ">
+        <div class="">
+         <h6 class="my-2">Done</h6>
+         <span class="h2 fw-bolder seconary-color">{{tasksCount?.done}}</span>
+        </div>
+        <div class="chart-icon chart-icon-3 mt-5">
+         <i>
+          <img src="./assets/images/8396416_job_employment_business_recuitment_seeker_icon 1.png" alt="">
+         </i>
+        </div>
+       </div>
+      </div>
+
+     </div>
+    </div>
+   </div>
+   <div class="col-md-4">
+    <div class="chart-card bg-white">
+     <div class="w-100 mx-auto text-center">
+      <canvas id="employeeStat">{{chart}}</canvas>
+
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>

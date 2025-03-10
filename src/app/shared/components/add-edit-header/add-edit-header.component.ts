@@ -14,11 +14,7 @@ export class AddEditHeaderComponent {
   }
   //? Input property to receive the Main Text header 
   @Input() textHeader!: string;
-
-
-
   //? Input property to receive the Main Text Btn header
   @Input() mainTxTHeaderLink!: string;
-
   @Input() toDynamicPath!: string;;
 }

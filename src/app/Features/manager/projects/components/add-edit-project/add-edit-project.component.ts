@@ -15,11 +15,8 @@ import { Projects } from '../../models/projects';
 export class AddEditProjectComponent implements OnInit {
   // Main Text Add-Edit header  will be passed to the add-edit--shared-header component ...
   editTextHeader: string = 'Update this project';
-
   addTextHeader: string = 'Add a new project';
   viewTextHeader: string = 'View a project';
-
-
   // Main Text Add-Edit header Link  will be passed to the add-edit--shared-header component ...
   mainTxTHeaderLink: string = 'View all projects';
 
@@ -71,11 +68,11 @@ export class AddEditProjectComponent implements OnInit {
 
   //Function To Add-And-Edit-Project Function 
   onAddEdietProject(ProjectForm: FormGroup) {
-    console.log(ProjectForm.value);
+    // console.log(ProjectForm.value);
     if (this.ProjectID) {
       this._ProjectsService.editManagerProject(this.ProjectID, ProjectForm.value).subscribe({
         next: () => { },
-        error: (error: HttpErrorResponse) => this._HelperService.error(error),
+        error: (error: HttpErrorResponse) => this._HelperService.error(error, 'Notify That!'),
         complete: () => {
           this._Router.navigate([RoutePath.project.project])
           this._HelperService.success('Project Updated Successfully');
@@ -84,7 +81,7 @@ export class AddEditProjectComponent implements OnInit {
     } else {
       this._ProjectsService.AddManagerProject(ProjectForm.value).subscribe({
         next: () => { },
-        error: (error: HttpErrorResponse) => this._HelperService.error(error),
+        error: (error: HttpErrorResponse) => this._HelperService.error(error, 'Done'),
         complete: () => {
           this._Router.navigate([RoutePath.project.project])
           this._HelperService.success('Project Created Successfully');
@@ -98,7 +95,7 @@ export class AddEditProjectComponent implements OnInit {
     this._ProjectsService.getManagerProjectById(id).subscribe({
       next: (res) => {
         this.projectList = res
-        console.log(this.projectList);
+        // console.log(this.projectList);
       },
       error(err) { },
       complete: () => {

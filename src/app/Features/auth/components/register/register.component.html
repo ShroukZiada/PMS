@@ -4,10 +4,10 @@
     <div class="row justify-content-center vh-100 align-items-center">
       <div class="col-md-7">
         <div class="logo d-flex justify-content-center align-content-center row1 ">
-          <img src="../../../../../assets/images/logo-.png" alt="" class="">
+          <img src="./assets/images/logo-.png" alt="" class="">
         </div>
-        <div class="Card sign_up_cared auth__card mt-3 p-5 text-capitalize">
-          <div class="card-header ">
+        <div class="Card sign_up_cared auth__card mt-3 p-5 ">
+          <div class="card-header text-capitalize">
             <p class="m-0">welcome to PMS</p>
             <h1 class="h3">Create New Account</h1>
           </div>
@@ -35,7 +35,7 @@
                     <button type="button" (click)="openFileSelector()"
                       class="bg-transparent d-flex flex-column align-items-center">
                       <i class="fa-solid fa-upload fs-4 mb-2 text-warning"></i>
-                      <span class=" upload text-light">
+                      <span class=" upload text-light text-capitalize">
                         Upload your profile image</span>
                     </button>
                   </div>
@@ -51,14 +51,15 @@
                   <!-- userName -->
                   <div class="col-md-6 mt-5 ">
                     <mat-form-field class="w-100">
-                      <mat-label class="lable">Full Name</mat-label>
+                      <mat-label class="lable text-capitalize">Full Name</mat-label>
                       <input formControlName="userName" type="text" placeholder="Enter your Full Name" class="inp "
                         matInput>
-                      <mat-hint class="text-danger"
+                      <mat-hint class="text-danger text-capitalize"
                         *ngIf="registerForm.get('userName')?.touched && registerForm.get('userName')?.hasError('required')">
                         User Name is required
                       </mat-hint>
-                      <mat-error class="text-danger" *ngIf="registerForm.get('userName')?.getError('pattern')">User
+                      <mat-error class="text-danger text-capitalize"
+                        *ngIf="registerForm.get('userName')?.getError('pattern')">User
                         name must
                         containes from 4 to 8 characters and end with numbers without spaces</mat-error>
                     </mat-form-field>
@@ -66,14 +67,14 @@
                   <!-- E-mail -->
                   <div class="col-md-6 mt-5">
                     <mat-form-field class="w-100">
-                      <mat-label class="">Email</mat-label>
+                      <mat-label class="text-capitalize">Email</mat-label>
                       <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com"
                         class="inp ">
-                      <mat-error
+                      <mat-error class="text-capitalize"
                         *ngIf="registerForm.get('email')?.errors !== null && registerForm.get('email')?.errors?.['pattern'] && registerForm.get('email')?.value !== localPss">
                         Please enter a valid email address
                       </mat-error>
-                      <mat-hint class="text-danger"
+                      <mat-hint class="text-danger text-capitalize"
                         *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.hasError('required')">
                         E-mail is required
                       </mat-hint>
@@ -82,13 +83,14 @@
                   <!-- Country -->
                   <div class="col-md-6 mt-5">
                     <mat-form-field class="w-100">
-                      <mat-label>Country</mat-label>
+                      <mat-label class="text-capitalize">Country</mat-label>
                       <input type="text" matInput formControlName="country" placeholder="Enter Your Country"
                         class="inp ">
-                      <mat-error *ngIf="registerForm.hasError('country') && !registerForm.hasError('required')">
+                      <mat-error class="text-capitalize"
+                        *ngIf="registerForm.hasError('country') && !registerForm.hasError('required')">
                         Please enter a valid country
                       </mat-error>
-                      <mat-hint class="text-danger"
+                      <mat-hint class="text-danger text-capitalize"
                         *ngIf="registerForm.get('country')?.touched && registerForm.get('country')?.hasError('required')">
                         Country is required
                       </mat-hint>
@@ -97,13 +99,13 @@
                   <!-- Phone -->
                   <div class="col-md-6 mt-5">
                     <mat-form-field class="w-100">
-                      <mat-label>Phone Number</mat-label>
+                      <mat-label class="text-capitalize">Phone Number</mat-label>
                       <input type="tel" matInput formControlName="phoneNumber" placeholder="Enter Your phone Number"
                         class="inp ">
-                      <mat-error *ngIf="registerForm.get('phoneNumber')?.getError('pattern')">
+                      <mat-error class="text-capitalize" *ngIf="registerForm.get('phoneNumber')?.getError('pattern')">
                         phoneNumber Start with 02 - and Are exactly eleven digits long
                       </mat-error>
-                      <mat-hint class="text-danger"
+                      <mat-hint class="text-danger text-capitalize"
                         *ngIf="registerForm.get('phoneNumber')?.touched && registerForm.get('phoneNumber')?.hasError('required')">
                         phoneNumber is required
                       </mat-hint>
@@ -112,7 +114,7 @@
                   <!-- Password -->
                   <div class="col-md-6  mt-5">
                     <mat-form-field class="w-100 ">
-                      <mat-label class="lable">Password</mat-label>
+                      <mat-label class="lable text-capitalize">Password</mat-label>
                       <input formControlName="password" class="inp text-dark" matInput placeholder="Enter your password"
                         [type]="hidePaasword ? 'password' : 'text'">
                       <button type="button" class="bg-transparent" mat-icon-button matSuffix
@@ -122,11 +124,11 @@
                           'visibility'}}
                         </mat-icon>
                       </button>
-                      <mat-error
+                      <mat-error class="text-capitalize"
                         *ngIf="registerForm.get('password')?.errors !== null && registerForm.get('password')?.errors?.['required']">Password
                         is required
                       </mat-error>
-                      <mat-error
+                      <mat-error class="text-capitalize"
                         *ngIf="registerForm.get('password')?.errors !== null && registerForm.get('password')?.errors?.['pattern'] && registerForm.get('password')?.value !== localPss">Password
                         must contain at least one digit,one lowercase letter,one uppercase letter,one special character,
                         and is at least 6 characters long.
@@ -136,7 +138,7 @@
                   <!-- Commfoerm Password -->
                   <div class="col-md-6 mt-5">
                     <mat-form-field class="w-100">
-                      <mat-label class="lable">Confirm Password</mat-label>
+                      <mat-label class="lable text-capitalize">Confirm Password</mat-label>
                       <input formControlName="confirmPassword" placeholder="Confirm Password" class="inp text-white"
                         matInput [type]="hideCOMFPaasword ? 'password' : 'text'">
                       <button type="button" class="bg-transparent" mat-icon-button matSuffix
@@ -144,20 +146,21 @@
                         [attr.aria-pressed]="hideCOMFPaasword">
                         <mat-icon class="text-success">{{hideCOMFPaasword ? 'visibility_off' : 'visibility'}}</mat-icon>
                       </button>
-                      <mat-error
+                      <mat-error class="text-capitalize"
                         *ngIf="registerForm.get('confirmPassword')?.getError('required')&&(registerForm.get('confirmPassword')?.value!=''||registerForm.get('confirmPassword')?.touched||registerForm.invalid)">confirmPassword
                         is required</mat-error>
-                      <mat-hint class="text-danger "
+                      <mat-hint class="text-danger text-capitalize"
                         *ngIf="registerForm.get('confirmPassword')?.value!=''&&registerForm.get('confirmPassword')?.getError('compare')">Password
                         not match</mat-hint>
                     </mat-form-field>
                   </div>
-                  <p class="text-white m-0 p-0">if you already have an account <a routerLink="../login">sign in</a></p>
+                  <p class="text-white m-0 p-0 text-capitalize">if you already have an account <a
+                      routerLink="../login">sign in</a></p>
 
                   <div class="d-flex justify-content-around align-items-center">
                     <button type="submit" class="btn btn-warning w-50 rounded rounded-pill mt-2"
                       [disabled]="registerForm.invalid">
-                      <i *ngIf="isloading" class="fa-solid fa-spinner fa-spin-pulse"></i>
+                      <i *ngIf="isloading" class="fa-solid fa-spinner fa-spin-pulse text-capitalize"></i>
                       sign Up</button>
                   </div>
                 </div>

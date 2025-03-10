@@ -13,6 +13,8 @@ export namespace Tasks {
   pageNumber?: number;
   status: string;
  }
+
+
  export interface Tasks {
   id: number
   title: string
@@ -25,7 +27,6 @@ export namespace Tasks {
  }
  export interface TasksByID {
   id: number
-
  }
 
  export interface Project {

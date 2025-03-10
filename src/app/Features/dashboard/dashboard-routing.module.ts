@@ -10,8 +10,11 @@ const routes: Routes = [{
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent, title: 'Home' },
     { path: 'employee', canActivate: [employeeGuard], loadChildren: () => import('../employee/employee.module').then(m => m.EmployeeModule) },
-    { path: 'manager', canActivate: [managerGuard], loadChildren: () => import('../manager/manager.module').then(m => m.ManagerModule) }
-  ]
+    { path: 'manager', canActivate: [managerGuard], loadChildren: () => import('../manager/manager.module').then(m => m.ManagerModule) },
+    {
+      path: 'profile',
+      loadComponent: () => import('../../shared/components/profile/profile.component').then(m => m.ProfileComponent)
+    },]
 }];
 
 @NgModule({

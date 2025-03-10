@@ -24,6 +24,8 @@
       </mat-form-field>
     </div>
     <div class="">
+      <app-no-data *ngIf=" TasktList?.length==0 "></app-no-data>
+
       <table *ngIf="TasktList.length != 0"
         class="text-capitalize table table-bordered table-hover table-striped border border-2 p-3 text-center">
         <thead>
@@ -42,7 +44,7 @@
             <!--? Title Column -->
             <td class="pt-3">{{tasks.title}}</td>
             <!--? employeeName Column -->
-            <td class="pt-3">{{tasks.employee.userName}}</td>
+            <td class="pt-3">{{tasks.employee?.userName}}</td>
             <!--? projecttitle Column -->
             <td class="pt-3">{{tasks.project.title}}</td>
             <!--? status Column -->
@@ -75,7 +77,6 @@
           </tr>
         </tbody>
       </table>
-      <!-- <app-no-data *ngIf=" TasktList.data.length==0 "></app-no-data> -->
       <div class=" bg-transparent">
         <!-- ? paginator -->
         <mat-paginator *ngIf="TasktList.length > 0" #paginator class="demo-paginator  bg-transparent"

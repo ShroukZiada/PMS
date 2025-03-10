@@ -1,6 +1,7 @@
 export namespace Users {
 
  export interface userData {
+  message: string;
   pageNumber: number;
   pageSize: number;
   totalNumberOfPages: number;
@@ -17,26 +18,19 @@ export namespace Users {
   creationDate: string,
   imagePath: string
   country: string,
-  Tasks: userTasks
+  group: IGroup
+
+
+
+
  }
 
 
- export interface userTasks {
+ export interface IGroup {
   id: number,
-  title: string,
-  description: string,
-  status: string,
-  creationDate: string,
-  modificationDate: string
-  country: string,
-  project: IProject
- }
- export interface IProject {
-  id: number,
-  title: string,
-  description: string,
-  status: string,
+  name: string,
   creationDate: string,
   modificationDate: string
  }
 }
+

@@ -23,6 +23,12 @@ export class RoutePath {
 
  public static users = {
   users: 'users',
+ }
+ public static Employee = {
+  projectTable: 'project',
+  taskBoard: '',
 
  }
+
+
 }

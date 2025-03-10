@@ -46,8 +46,10 @@ export class HomeComponent implements OnInit {
       this.onGetManagerProjects()
       this.onGetManagerTasks()
       this.onGetTasksCount()
-      this.getTasksCountEmployee()
       this.getUsersCount()
+    } else {
+      this.getTasksCountEmployee()
+
     }
   }
 
@@ -86,7 +88,7 @@ export class HomeComponent implements OnInit {
   onGetTasksCount() {
     this._HelperService.getTasksCount().subscribe({
       next: (res) => {
-        console.log(res);
+        // console.log(res);
         this.tasksCount = res
       },
       error: () => { },
@@ -103,7 +105,7 @@ export class HomeComponent implements OnInit {
                 data: [this.tasksCount?.toDo, this.tasksCount?.inProgress, this.tasksCount?.done],
                 backgroundColor: [
                   'rgb(255, 99, 132)',
-                  'rgb(54, 162, 235)',
+                  'rgb(255, 128, 0)',
                   'rgb(0,128,0)',
                 ],
                 hoverOffset: 4
@@ -120,6 +122,8 @@ export class HomeComponent implements OnInit {
       next: (res) => {
         // console.log(res);
         this.tasksCount = res;
+        // console.log(this.tasksCount);
+
 
       }, error: (err) => {
         console.log(err);
@@ -132,8 +136,11 @@ export class HomeComponent implements OnInit {
             datasets: [{
               label: 'Status',
               data: [this.tasksCount?.toDo, this.tasksCount?.inProgress, this.tasksCount?.done],
-              backgroundColor: ['#CFD1EC', '#E4E4BC', '#E7C3D7'],
-              hoverOffset: 4
+              backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(255, 128, 0)',
+                'rgb(0,128,0)',
+              ], hoverOffset: 4
             }]
           }
         })
@@ -146,7 +153,7 @@ export class HomeComponent implements OnInit {
     this._HelperService.getUsersCount().subscribe({
       next: (res) => {
         this.usersCount = res
-        console.log(this.usersCount);
+        // console.log(this.usersCount);
 
       },
       error: () => { },

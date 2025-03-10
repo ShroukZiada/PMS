@@ -42,7 +42,7 @@ export class TasksComponent implements OnInit {
     this._TasksService.getTasksForManager(prams).subscribe({
       next: (res) => {
         this.TasktList = res.data
-        console.log(this.TasktList);
+        // console.log(this.TasktList);
 
         this.totalNumberOfRecords = res.totalNumberOfRecords
       },
@@ -51,15 +51,15 @@ export class TasksComponent implements OnInit {
   // Function To oPEN Shared Delet Component
   openDeleteDialo(id: number, taskName: string, enterAnimationDuration: string, exitAnimationDuration: string): void {
     const dialo = this.dialog.open(SharedDeleteComponent, {
-      width: '500px',
+      data: { itemID: id, name: taskName, type: 'task' },
+      width: '50%',
+      height: '50%',
       enterAnimationDuration,
       exitAnimationDuration,
-      data: { itemID: id, name: taskName, type: 'task' },
-
     });
     dialo.afterClosed().subscribe(res => {
       if (res != null) {
-        this.onDeleteTasks(res)
+        this.onDeleteTasks(id)
       }
     })
   }
@@ -67,12 +67,13 @@ export class TasksComponent implements OnInit {
   // Function To Delete ManagerTasks By ID
   onDeleteTasks(id: number) {
     this._TasksService.deleteManagertaskById(id).subscribe({
-      next: () => { },
-      error: (error: HttpErrorResponse) => this._HelperService.error(error),
+      next: () => {
+      },
+      error: (error: HttpErrorResponse) => this._HelperService.error(error, 'Notify That!'),
 
       complete: () => {
+        this._HelperService.success('Task Deleted Successfully');
         this.onGetManagerTasks()
-        this._HelperService.success('task deleted Successfully');
       }
     })
   }
