@@ -13,19 +13,19 @@ export class HttpEndPoint {
  public static Projets = {
   Project: 'Project',
   ManagerProject: 'Project/manager?',
+  employeeProoject: 'Project/employee',
  }
  public static Tasks = {
   Tasks: 'Task',
   ManagerTasks: 'Task/manager',
   TaskCount: 'Task/count',
+  updateTask: '',
 
  }
-
  public static Users = {
-  Users: 'users',
+  Users: 'Users',
   ManagerTasks: 'Task/manager',
   TaskCount: 'Task/count',
-
  }
 }
 
